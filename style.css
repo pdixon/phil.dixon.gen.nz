@@ -1,0 +1,18 @@
+body {
+    margin-left: 200px;
+    background: #3f3f3f;
+    color: #dcdccc;
+    font-family: Georgia, Garamond, "Times New Roman", serif;
+}
+
+nav {
+    margin-left: -190px;
+    float: left;
+    width: 160px;
+    height: auto;
+}
+
+nav li {
+    list-style:none
+}
+
