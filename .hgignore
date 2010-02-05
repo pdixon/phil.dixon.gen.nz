@@ -1,0 +1,10 @@
+syntax: glob
+*.orig
+*.rej
+*~
+*.swp
+.DS_Store
+_site/*
+
+syntax: regexp
+.*\#.*\#$
