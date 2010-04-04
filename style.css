@@ -5,6 +5,18 @@ body {
     font-family: Georgia, Garamond, "Times New Roman", serif;
 }
 
+h1, h2{
+	font-family: Helvetica;
+}
+
+#masthead{
+	font-size: 1.2em
+}
+
+h1 + h2{
+	margin-top: -0.5em;
+}
+
 nav {
     margin-left: -190px;
     float: left;
