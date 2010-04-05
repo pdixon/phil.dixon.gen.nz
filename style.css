@@ -1,30 +1,76 @@
 body {
-    margin-left: 200px;
-    background: #3f3f3f;
-    color: #dcdccc;
-    font-family: Georgia, Garamond, "Times New Roman", serif;
+   margin-left: 200px;
+   margin-right: 200px;
+   background: whitesmoke;
+   font-family: Georgia, Garamond, "Times New Roman", serif;
 }
 
-h1, h2{
-	font-family: Helvetica;
+a { text-decoration: none; color: #339; }
+a:hover { text-decoration: underline; color: #33f; }
+
+/* @group Header */
+header {
+   position: relative;
+   font-family: Helvetica;
+   line-height: 1em;
+   margin-top: .5em;
+   margin-bottom: .5em;
+   color: gray;
 }
 
-#masthead{
-	font-size: 1.2em
+header h1 {
+   margin-bottom: 0;
+   line-height: 0.9em;
+   display: block;
+   font-weight: normal;
 }
 
-h1 + h2{
-	margin-top: -0.5em;
+header h2 {
+   font-size: 0.9em;
+   font-weight: normal;
 }
+/* @end Header */
 
+/* @group Navigation */
+nav, nav a { color: gray; }
+nav:hover a:hover { text-decoration: none; }
 nav {
-    margin-left: -190px;
-    float: left;
-    width: 160px;
-    height: auto;
+   display: block;
+   border-bottom: 1px solid gray;
+}
+nav ul {
+   font-family: Helvetica;
+   font-size: 100%;
+   line-height: 1.6em;
+   padding-left: 0;
+   margin: 0;
+   width: 50%;
+}
+nav ul li { display: inline; }
+nav ul li a {
+   padding: 0.4em 0.3em 0 0.3em;
+   display: inline;
+}
+nav ul li a:hover {
+   color: #33f;
+   border-bottom: 2px solid #33f;
 }
 
-nav li {
-    list-style:none
+body#Home nav a#Home, 
+body#Reference nav a#Reference, 
+body#About nav a#About,
+body#Projects nav a#Projects
+{ 
+   border-bottom: 2px solid gray; 
 }
+/* @end Navigation */
 
+/* @group Footer */
+footer {
+   display: block;
+   color: gray;
+   font-family: Helvetica;
+   font-size: 0.9em;
+   border-top: 1px solid gray;
+}
+/* @end Footer */

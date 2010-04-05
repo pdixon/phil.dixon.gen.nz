@@ -1,47 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<link rel="stylesheet" href="style.css" /> 
-<title>Something Catchy Goes Here</title>
-</head>
-<body>
-<div id="masthead">
-<header>
-<hgroup>
-  <h1>Something Catchy Goes Here</h1>
-  <h2>Stuff, most of it obscure, but all interesting to me.</h2>
-  <h3>
-</hgroup>
-</header>
-</div>
-<nav>
-by Phillip Dixon
-<ul>
-  <li><a href="/">Home</a></li>
-  <li><a href="#">Projects</a></li>
-  <li><a href="#">Colophon<a></li>
-</ul>
-</nav>
-<div id="content">
+---
+layout: default
+title: Home
+section: Home
+---
+
+{% for post in site.posts %}
 <article>
-  <header>
-    <time datetime="2009-12-24" pubdate>2009-12-24</time>
-    <h1>A Post</h1>
-  </header>
-  <p>This is some content. It isn't very interesting.</p>
+<header>
+<h1><a href="{{ post.url }}" title="{{ post.excerpt }}">{{ post.title}}</a></h1>
+<time datetime="{{post.date}}" pubdate>{{ post.date | date_to_string }}</time>
+</header>
+{{post.content}}
 </article>
-</div>
-<footer>
-  <p>&#169; 2009&#8211;10 <a href="#">Phillip
-  Dixon</a></p>
- <a rel="license"
-  href="http://creativecommons.org/licenses/by-sa/3.0/nz/"><img alt="Creative
-  Commons License" style="border-width:0"
-  src="http://i.creativecommons.org/l/by-sa/3.0/nz/88x31.png"
-  /></a><br />This work is licensed under a <a rel="license"
-  href="http://creativecommons.org/licenses/by-sa/3.0/nz/">Creative
-  Commons Attribution-Share Alike 3.0 New Zealand License</a>.
-</footer>
-</body>
-</html>
+{% endfor %}
