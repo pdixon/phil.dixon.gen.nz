@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: note
 title: Basic CSS for a Programmer
 section: Reference
 ---
