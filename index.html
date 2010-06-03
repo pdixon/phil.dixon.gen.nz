@@ -8,7 +8,7 @@ section: Home
 <article>
 <header>
 <h1><a href="{{ post.url }}" title="{{ post.excerpt }}">{{ post.title}}</a></h1>
-<time datetime="{{post.date}}" pubdate>{{ post.date | date_to_string }}</time>
+<time class="timeago" datetime="{{post.date | date_to_xmlschema}}">{{ post.date | date_to_string }}</time>
 </header>
 {{post.content}}
 </article>
