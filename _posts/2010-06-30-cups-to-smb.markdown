@@ -9,14 +9,16 @@ to get CUPS to event acknowledge smb printers existed. It would work
 perfectly on my laptop with Ubuntu 10.04, and but on my Debian Squeeze
 desktop. In the end I tracked it down to the following:
 
-1. CUPS relies on smbspool. On Debian and Ubuntu this is provided by
-   the smbclient package.
+1. CUPS relies on `smbspool`. On Debian and Ubuntu this is provided by
+   the `smbclient` package.
    
-2. The permissions on /usr/lib/cups/backend had been change so it's
-   contents could only be seen be root {reference site that put me on
-   to this}. I'm not sure why this being wrong didn't break
-   everything. There is also a /usr/lib/cups/backends-available but
+2. The permissions on `/usr/lib/cups/backend` had been change so it's
+   contents could only be seen be root ([fixing-smb][this] post put me
+   on to this issue). I'm not sure why this being wrong didn't break
+   everything. There is also a `/usr/lib/cups/backend-available` but
    for some reason there isn't an entry in this for smb.
    
-Installing smbclient and fixing the permissions on
-/usr/lib/cups/backend bought everything to life.
+Installing `smbclient` and fixing the permissions on
+`/usr/lib/cups/backend` bought everything to life.
+
+[fixing-smb]: http://www.compdigitec.com/labs/2010/01/16/fixing-usrlibcupsbackendsmb-failed-error-in-ubuntu/
