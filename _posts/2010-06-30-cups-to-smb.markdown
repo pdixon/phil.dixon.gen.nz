@@ -13,7 +13,7 @@ desktop. In the end I tracked it down to the following:
    the `smbclient` package.
    
 2. The permissions on `/usr/lib/cups/backend` had been change so it's
-   contents could only be seen be root ([fixing-smb][this] post put me
+   contents could only be seen be root ([this][fixing-smb] post put me
    on to this issue). I'm not sure why this being wrong didn't break
    everything. There is also a `/usr/lib/cups/backend-available` but
    for some reason there isn't an entry in this for smb.
