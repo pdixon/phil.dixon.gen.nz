@@ -1,7 +1,8 @@
 @media screen {
 body {
-   margin-left: 200px;
-   margin-right: 200px;
+    max-width: 1000px;
+   margin: 0px auto;
+   padding: 20px;
    background: whitesmoke;
    font-family: Georgia, Garamond, "Times New Roman", serif;
 }
