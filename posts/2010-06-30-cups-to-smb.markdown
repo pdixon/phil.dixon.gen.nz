@@ -1,7 +1,7 @@
 ---
-layout: post
 title: SMB Printers with CUPS on Debian
-section: Blog
+description: Printing to a CUPS printer.
+tags: debian
 ---
 
 I just spent a very frustrating couple of hours this afternoon trying
