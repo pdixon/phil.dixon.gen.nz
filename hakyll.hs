@@ -11,18 +11,20 @@ import Hakyll
 
 main :: IO ()
 main = hakyll $ do
-    route   "css/*" idRoute
-    compile "css/*" compressCssCompiler
+    match "css/*" $ do
+          route idRoute
+          compile compressCssCompiler
 
-    route   "js/*"  idRoute
-    compile "js/*"  copyFileCompiler
+    match "js/*" $ do 
+          route idRoute
+          compile copyFileCompiler
 
-    compile "templates/*" templateCompiler
+    match "templates/*" $ do
+          compile templateCompiler
 
     -- Index
-    route  "index.html" idRoute
-    create "index.html" $
-        constA mempty
+    match "index.html" $ route idRoute
+    create "index.html" $ constA mempty
             >>> arr (setField "title" "Home")
             >>> arr (setField "section" "Home")
             >>> requireA "tags" (setFieldA "tagcloud" (renderTagCloud'))
@@ -31,26 +33,25 @@ main = hakyll $ do
             >>> applyTemplateCompiler "templates/default.html"
 
     -- Post list
-    route  "posts.html" idRoute
-    create "posts.html" $
-        constA mempty
-            >>> arr (setField "title" "Posts")
-            >>> requireAllA "posts/*" addPostList
-            >>> applyTemplateCompiler "templates/posts.html"
-            >>> applyTemplateCompiler "templates/default.html"
+    match  "posts.html" $ route idRoute
+    create "posts.html" $ constA mempty
+               >>> arr (setField "title" "Posts")
+               >>> requireAllA "posts/*" addPostList
+               >>> applyTemplateCompiler "templates/posts.html"
+               >>> applyTemplateCompiler "templates/default.html"
 
     -- Render each and every post
-    route   "posts/*" $ setExtension ".html"
-    compile "posts/*" $
-        pageCompiler
-            >>> arr (renderDateField "date" "%B %e, %Y" "Date unknown")
-            >>> arr (setField "section" "Blog")
-            >>> renderTagsField "prettytags" (fromCaptureString "tags/*")
-            >>> applyTemplateCompiler "templates/post.html"
-            >>> applyTemplateCompiler "templates/default.html"
+    match "posts/*" $ do
+                  route $ setExtension ".html"
+                  compile $ pageCompiler
+                        >>> arr (renderDateField "date" "%B %e, %Y" "Date unknown")
+                        >>> arr (setField "section" "Blog")
+                        >>> renderTagsField "prettytags" (fromCaptureString "tags/*")
+                        >>> applyTemplateCompiler "templates/post.html"
+                        >>> applyTemplateCompiler "templates/default.html"
 
     -- Render RSS feed
-    route  "rss.xml" idRoute
+    match  "rss.xml" $ route idRoute
     create "rss.xml" $
         requireAll_ "posts/*" >>> renderRss feedConfiguration
 
@@ -59,9 +60,9 @@ main = hakyll $ do
         requireAll "posts/*" (\_ ps -> readTags ps :: Tags String)
 
     -- Add a tag list compiler for every tag
-    route "tags/*" $ setExtension ".html"
+    match "tags/*" $ route $ setExtension ".html"
     metaCompile $ require_ "tags"
-        >>> arr (M.toList . tagsMap)
+        >>> arr tagsMap
         >>> arr (map (\(t, p) -> (tagIdentifier t, makeTagList t p)))
 
     -- End
