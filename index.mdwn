@@ -1,0 +1,6 @@
+---
+title: Phil Dixon
+section: Home
+---
+
+Welcome to my home on the web.
