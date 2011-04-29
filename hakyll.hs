@@ -23,14 +23,19 @@ main = hakyll $ do
           compile templateCompiler
 
     -- Index
-    match "index.html" $ route idRoute
-    create "index.html" $ constA mempty
-            >>> arr (setField "title" "Home")
-            >>> arr (setField "section" "Home")
-            >>> requireA "tags" (setFieldA "tagcloud" (renderTagCloud'))
+    match "index.mdwn" $ do
+          route $ setExtension "html"
+          compile $ pageCompiler
             >>> requireAllA "posts/*" (id *** arr (take 5 . reverse . sortByBaseName) >>> addPostList)
             >>> applyTemplateCompiler "templates/index.html"
             >>> applyTemplateCompiler "templates/default.html"
+    
+    -- Static Pages
+    forM_ ["about.mdwn", "projects.mdwn"] $ \page ->
+        match page $ do
+                  route $ setExtension "html"
+                  compile $ pageCompiler
+                     >>> applyTemplateCompiler "templates/default.html"
 
     -- Post list
     match  "posts.html" $ route idRoute
@@ -67,12 +72,9 @@ main = hakyll $ do
 
     -- End
     return ()
-   where
-    renderTagCloud' :: Compiler (Tags String) String
-    renderTagCloud' = renderTagCloud tagIdentifier 100 120
 
-    tagIdentifier :: String -> Identifier
-    tagIdentifier = fromCaptureString "tags/*"
+tagIdentifier :: String -> Identifier
+tagIdentifier = fromCaptureString "tags/*"
 
 addPostList :: Compiler (Page String, [Page String]) (Page String)
 addPostList = setFieldA "posts" $
