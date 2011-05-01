@@ -1,10 +1,66 @@
 @media screen {
 body {
     max-width: 1000px;
-    margin: 0px auto;
-    padding: 20px;
-    background: whitesmoke;
-    font-family: Georgia, Garamond, "Times New Roman", serif;
+   margin: 0px auto;
+   padding: 20px;
+   background: whitesmoke;
+   font-family: Georgia, Garamond, "Times New Roman", serif;
+}
+
+a { text-decoration: none; color: #339; }
+a:hover { text-decoration: underline; color: #33f; }
+
+/* @group Header */
+body > header {
+   position: relative;
+   font-family: Helvetica, sans-serif;
+   line-height: 1em;
+   margin-top: .5em;
+   margin-bottom: .5em;
+   color: gray;
+}
+
+body > header h1 {
+   margin-bottom: 0;
+   line-height: 0.9em;
+   display: block;
+   font-weight: normal;
+}
+
+body > header h1 a {
+    color: gray;
+}
+
+body > header h2 {
+   font-size: 0.9em;
+   font-weight: normal;
+}
+/* @end Header */
+
+/* @group Navigation */
+nav, nav a { color: gray; }
+nav:hover a:hover { text-decoration: none; }
+nav {
+   display: block;
+   border-bottom: 1px solid gray;
+}
+nav ul {
+   font-family: Helvetica, sans-serif;
+   font-size: 100%;
+   padding-left: 0;
+   margin: 0;
+}
+nav ul li { display: inline; }
+nav ul li a {
+   padding: 0.4em 0.3em 0 0;
+   display: inline;
+}
+nav ul li+li a {
+   padding: 0.4em 0.3em 0 0.3em;
+}
+nav ul li a:hover {
+   color: #33f;
+   border-bottom: 2px solid #33f;
 }
 
 body#Home nav a#Home, 
@@ -14,7 +70,32 @@ body#Projects nav a#Projects,
 body#About nav a#About,
 body#Projects nav a#Projects
 { 
+   border-bottom: 2px solid gray; 
+}
+/* @end Navigation */
 
+/* @group Footer */
+footer {
+   display: block;
+   color: gray;
+   font-family: Helvetica, sans-serif;
+   font-size: 0.9em;
+   border-top: 1px solid gray;
+}
+/* @end Footer */
+}
+
+/* @group Article */
+article header {
+    font-family: Helvetica, sans-serif;
+}
+
+article header p {
+    font-style: italic;
+}
+
+article > h1, h2, h3 {
+    font-family: Helvetica, sans-serif;
 }
 
 /*
