@@ -41,6 +41,7 @@ main = hakyll $ do
     match  "posts.html" $ route idRoute
     create "posts.html" $ constA mempty
                >>> arr (setField "title" "Posts")
+               >>> arr (setField "section" "Blog")
                >>> requireAllA "posts/*" addPostList
                >>> applyTemplateCompiler "templates/posts.html"
                >>> applyTemplateCompiler "templates/default.html"
@@ -51,7 +52,7 @@ main = hakyll $ do
                   compile $ pageCompiler
                         >>> arr (renderDateField "date" "%B %e, %Y" "Date unknown")
                         >>> arr (setField "section" "Blog")
-                        >>> renderTagsField "prettytags" (fromCaptureString "tags/*")
+                        >>> renderTagsField "prettytags" (fromCapture "tags/*")
                         >>> applyTemplateCompiler "templates/post.html"
                         >>> applyTemplateCompiler "templates/default.html"
 
@@ -70,11 +71,8 @@ main = hakyll $ do
         >>> arr tagsMap
         >>> arr (map (\(t, p) -> (tagIdentifier t, makeTagList t p)))
 
-    -- End
-    return ()
-
 tagIdentifier :: String -> Identifier
-tagIdentifier = fromCaptureString "tags/*"
+tagIdentifier = fromCapture "tags/*"
 
 addPostList :: Compiler (Page String, [Page String]) (Page String)
 addPostList = setFieldA "posts" $
@@ -90,6 +88,7 @@ makeTagList tag posts =
     constA (mempty, posts)
         >>> addPostList
         >>> arr (setField "title" ("Posts tagged " ++ tag))
+        >>> arr (setField "section" "Blog")
         >>> applyTemplateCompiler "templates/posts.html"
         >>> applyTemplateCompiler "templates/default.html"
 
