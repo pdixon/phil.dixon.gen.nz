@@ -1,6 +1,6 @@
 ---
-title: projects
-section Projects
+title: Projects
+section: Projects
 ---
 
 A pointer to my projects.
