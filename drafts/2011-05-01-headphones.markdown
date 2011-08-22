@@ -1,6 +1,8 @@
 ---
+layout: post
 title: Headphones
 section: Blog
+published: false
 tags: tools
 description: 
 ---
@@ -13,9 +15,10 @@ home I put on a pair of headphones.
 
 I bought my first pair of headphones in preparation for going to
 university. The hall of residence where I was going to be staying
-stressed the importance of a quite environment and I want to be able
-to listen to music while I worked ^[Once I moved in it turned out they
-put much less effort in to enforcing this, it could get noisy.].
+stressed the importance of a quite environment and I wanted to be able
+to listen to music while I worked[^1]. 
+
+[^1]: Once I moved in it turned out they put much less effort in to enforcing this, it could get noisy.
 
 The first pair was a fairly basic Sony model.
 
