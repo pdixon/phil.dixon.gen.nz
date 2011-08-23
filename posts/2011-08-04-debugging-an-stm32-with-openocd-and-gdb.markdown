@@ -32,7 +32,13 @@ Watchpoints are removed with:
 
     monitor rwp [address]
 
-{% gist 1124914 %}
+~~~
+target remote | openocd -p
+set remote hardware-breakpoint-limit 6
+set remote hardware-watchpoint-limit 4
+monitor reset halt
+~~~
+
 
 [^1]: `pskill` in scripts always makes me feel a bit uncomfortable.
 

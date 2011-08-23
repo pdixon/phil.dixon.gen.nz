@@ -10,4 +10,8 @@ what can be squeezed.
 I knocked up the following help today while I was tracking down what
 was using the RAM on my current project.
 
-{% gist 1119983 %}
+~~~{.bash}
+#!/usr/bash
+
+arm-none-eabi-nm -S -t d --size-sort $1 | awk '{if ($3 ~ /B|b|D|d/) {print $0; total += $2}} END{print "Total RAM Usage: " total}'
+~~~
