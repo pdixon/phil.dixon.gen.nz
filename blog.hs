@@ -28,46 +28,35 @@ main = hakyll $ do
     match "index.mdwn" $ do
           route $ setExtension "html"
           compile $ pageCompiler
-            >>> requireAllA "posts/*" (id *** arr (take 5 . reverse . sortByBaseName) >>> addPostList)
-            >>> applyTemplateCompiler "templates/index.html"
-            >>> applyTemplateCompiler "templates/default.html"
+             >>> setFieldPageList (take 3 . recentFirst)
+                "templates/postitem.html" "posts" "posts/*"
+             >>> applyTemplateCompiler "templates/index.html"
+             >>> applyTemplateCompiler "templates/default.html"
     
-    -- Static Pages
-    forM_ ["about.mdwn", "projects.mdwn"] $ \page ->
-        match page $ do
-                  route $ setExtension "html"
-                  compile $ pageCompiler
-                     >>> applyTemplateCompiler "templates/default.html"
-
     -- Post list
     match  "posts.html" $ route idRoute
     create "posts.html" $ constA mempty
                >>> arr (setField "title" "Posts")
                >>> arr (setField "section" "Blog")
-               >>> requireAllA "posts/*" addPostList
+               >>> setFieldPageList recentFirst
+                   "templates/postitem.html" "posts" "posts/*"
                >>> applyTemplateCompiler "templates/posts.html"
                >>> applyTemplateCompiler "templates/default.html"
 
-    -- Render each and every post
+    -- Render the posts
     match "posts/*" $ do
-                  route $ setExtension ".html"
-                  compile $ pageCompiler
-                        >>> arr (renderDateField "date" "%B %e, %Y" "Date unknown")
-                        >>> arr (setField "section" "Blog")
-                        >>> applyTemplateCompiler "templates/post.html"
-                        >>> applyTemplateCompiler "templates/default.html"
+        route $ setExtension ".html"
+        compile $ pageCompiler
+            >>> arr (copyBodyToField "content")
+            >>> arr (renderDateField "date" "%B %e, %Y" "Date unknown")
+            >>> arr (setField "section" "Blog")
+            >>> applyTemplateCompiler "templates/post.html"
+            >>> applyTemplateCompiler "templates/default.html"
 
     -- Render RSS feed
     match  "rss.xml" $ route idRoute
     create "rss.xml" $
         requireAll_ "posts/*" >>> renderRss feedConfiguration
-
-addPostList :: Compiler (Page String, [Page String]) (Page String)
-addPostList = setFieldA "posts" $
-    arr (reverse . sortByBaseName)
-        >>> require "templates/postitem.html" (\p t -> map (applyTemplate t) p)
-        >>> arr mconcat
-        >>> arr pageBody
 
 feedConfiguration :: FeedConfiguration
 feedConfiguration = FeedConfiguration
