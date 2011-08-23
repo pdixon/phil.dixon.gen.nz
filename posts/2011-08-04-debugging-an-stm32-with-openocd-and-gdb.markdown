@@ -1,7 +1,6 @@
 ---
-layout: post
-title: "Debugging an STM32 With OpenOCD and GDB"
-date: 2011-08-04 19:52
+title: Debugging an STM32 With OpenOCD and GDB
+tags: embedded
 ---
 
 ## Hooking GDB to OpenOCD

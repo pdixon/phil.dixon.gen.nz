@@ -1,7 +1,6 @@
 ---
-layout: post
-title: "Tracking RAM Usage"
-date: 2011-08-02 21:59
+title: Tracking RAM Usage
+tags: embedded
 ---
 
 Working on embedded projects sooner or later RAM becomes an issue.
