@@ -21,21 +21,22 @@ main = hakyllWith config $ do
       compile templateCompiler
 
     -- Index
-    match "index.mdwn" $ do
-      route $ setExtension "html"
-      compile $ pageCompiler
-                  >>> setFieldPageList (take 3 . recentFirst)
-                         "templates/postitem.html" "posts" "posts/*"
-                  >>> applyTemplateCompiler "templates/index.html"
-                  >>> applyTemplateCompiler "templates/default.html"
+    match "index.html" $ route idRoute
+    create "index.html" $ constA mempty
+               >>> arr (setField "title" "Phillip Dixon")
+               >>> arr (setField "section" "Home")
+               >>> setFieldPageList (take 3 . recentFirst)
+                       "templates/postitem.html" "posts" "posts/*"
+               >>> applyTemplateCompiler "templates/index.html"
+               >>> applyTemplateCompiler "templates/default.html"
     
     -- Post list
-    match  "posts.html" $ route idRoute
-    create "posts.html" $ constA mempty
-               >>> arr (setField "title" "Posts")
-               >>> arr (setField "section" "Blog")
+    match  "archive.html" $ route idRoute
+    create "archive.html" $ constA mempty
+               >>> arr (setField "title" "Archive")
+               >>> arr (setField "section" "Archive")
                >>> setFieldPageList recentFirst
-                   "templates/postitem.html" "posts" "posts/*"
+                   "templates/archiveitem.html" "posts" "posts/*"
                >>> applyTemplateCompiler "templates/posts.html"
                >>> applyTemplateCompiler "templates/default.html"
 

@@ -10,10 +10,13 @@ body {
 a { text-decoration: none; color: #339; }
 a:hover { text-decoration: underline; color: #33f; }
 
+h1, h2, h3, h4 {
+   font-family: Helvetica, sans-serif;
+}
+
 /* @group Header */
 body > header {
    position: relative;
-   font-family: Helvetica, sans-serif;
    line-height: 1em;
    margin-top: .5em;
    margin-bottom: .5em;
@@ -60,18 +63,20 @@ nav ul li+li a {
 }
 nav ul li a:hover {
    color: #33f;
-   border-bottom: 2px solid #33f;
 }
 
 body#Home nav a#Home, 
-body#Blog nav a#Blog, 
-body#Reference nav a#Reference, 
-body#Projects nav a#Projects, 
-body#About nav a#About,
-body#Projects nav a#Projects
+body#Archive nav a#Archive 
 { 
    border-bottom: 2px solid gray; 
 }
+
+body#Home nav a:hover#Home, 
+body#Archive nav a:hover#Archive 
+{ 
+   border-bottom: 2px solid #33f; 
+}
+
 /* @end Navigation */
 
 /* @group Footer */
