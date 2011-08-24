@@ -12,26 +12,22 @@ import qualified Data.Map as M
 import Hakyll
 
 main :: IO ()
-main = hakyll $ do
-    match "css/*" $ do
-          route idRoute
-          compile compressCssCompiler
+main = hakyllWith config $ do
+    ["js/*"] --> copy
 
-    match "js/*" $ do 
-          route idRoute
-          compile copyFileCompiler
+    ["css/*.css"] --> css
 
     match "templates/*" $ do
-          compile templateCompiler
+      compile templateCompiler
 
     -- Index
     match "index.mdwn" $ do
-          route $ setExtension "html"
-          compile $ pageCompiler
-             >>> setFieldPageList (take 3 . recentFirst)
-                "templates/postitem.html" "posts" "posts/*"
-             >>> applyTemplateCompiler "templates/index.html"
-             >>> applyTemplateCompiler "templates/default.html"
+      route $ setExtension "html"
+      compile $ pageCompiler
+                  >>> setFieldPageList (take 3 . recentFirst)
+                         "templates/postitem.html" "posts" "posts/*"
+                  >>> applyTemplateCompiler "templates/index.html"
+                  >>> applyTemplateCompiler "templates/default.html"
     
     -- Post list
     match  "posts.html" $ route idRoute
@@ -45,8 +41,8 @@ main = hakyll $ do
 
     -- Render the posts
     match "posts/*" $ do
-        route $ setExtension ".html"
-        compile $ pageCompiler
+      route $ setExtension ".html"
+      compile $ pageCompiler
             >>> arr (copyBodyToField "content")
             >>> arr (renderDateField "date" "%B %e, %Y" "Date unknown")
             >>> arr (setField "section" "Blog")
@@ -57,6 +53,25 @@ main = hakyll $ do
     match  "rss.xml" $ route idRoute
     create "rss.xml" $
         requireAll_ "posts/*" >>> renderRss feedConfiguration
+
+    where
+      xs --> f = mapM_ (\p -> match p $ f) xs
+
+      copy = route idRoute >> compile copyFileCompiler
+
+      css = route (setExtension "css") >> compile compressCssCompiler
+
+      topLevel = do
+        route $ setExtension "html"
+        compile $ pageCompiler
+                >>> applyTemplateCompiler "templates/default.html"
+                >>> relativizeUrlsCompiler
+
+config :: HakyllConfiguration
+config = defaultHakyllConfiguration
+    { deployCommand = "s3cmd sync --exclude 'drafts/*' _site/* s3://phil.dixon.gen.nz"
+    }
+
 
 feedConfiguration :: FeedConfiguration
 feedConfiguration = FeedConfiguration
