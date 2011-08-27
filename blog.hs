@@ -14,6 +14,7 @@ import Hakyll
 main :: IO ()
 main = hakyllWith config $ do
     ["js/*"] --> copy
+    ["images/*"] --> copy
 
     ["css/*.css"] --> css
 

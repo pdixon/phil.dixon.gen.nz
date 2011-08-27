@@ -1,10 +1,16 @@
 @media screen {
 body {
-    max-width: 1000px;
+   max-width: 1000px;
    margin: 0px auto;
-   padding: 20px;
+   /* padding: 18px; */
    background: whitesmoke;
    font-family: Georgia, Garamond, "Times New Roman", serif;
+   font-size: 18px;
+   line-height: 25px;
+}
+
+body.rhythm {
+    background: transparent url("/images/rhythm.png") top left;
 }
 
 a { text-decoration: none; color: #339; }
@@ -17,17 +23,17 @@ h1, h2, h3, h4 {
 /* @group Header */
 body > header {
    position: relative;
-   line-height: 1em;
-   margin-top: .5em;
-   margin-bottom: .5em;
+   /* margin-top: .5em; */
+   /* margin-bottom: .5em; */
    color: gray;
 }
 
 body > header h1 {
-   margin-bottom: 0;
-   line-height: 0.9em;
-   display: block;
-   font-weight: normal;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    line-height: 1em;
+    display: block;
+    font-weight: normal;
 }
 
 body > header h1 a {
@@ -35,8 +41,10 @@ body > header h1 a {
 }
 
 body > header h2 {
-   font-size: 0.9em;
+   font-size: 1em;
    font-weight: normal;
+   margin-top: 0;
+   margin-bottom: 0;
 }
 /* @end Header */
 
@@ -101,6 +109,42 @@ article header p {
 
 article > h1, h2, h3 {
     font-family: Helvetica, sans-serif;
+}
+
+article header h1 {
+    font-size: 2em;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+article p {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+
+p,ul,ol,dl,blockquote,pre {margin: 0 0 25px;}
+
+hr {
+    margin-top: -14px;
+    margin-bottom: -13px;
+    border-width: 1px 0 0 0;
+}
+
+/* Superscript and subscript that don't screw with line spacing.
+   from http://www.cs.tut.fi/~jkorpela/www/linespacing.html
+*/
+sup, sub {
+    vertical-align: 0;
+    position: relative;
+}
+
+sup {
+    bottom: 1ex;
+}
+
+sub {
+    top: 0.8ex;
 }
 
 /*
