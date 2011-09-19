@@ -17,6 +17,7 @@ main = hakyllWith config $ do
     ["images/*"] --> copy
 
     ["css/*.css"] --> css
+    ["css/*.scss"] --> scss
 
     match "templates/*" $ do
       compile templateCompiler
@@ -58,6 +59,12 @@ main = hakyllWith config $ do
       copy = route idRoute >> compile copyFileCompiler
 
       css = route (setExtension "css") >> compile compressCssCompiler
+
+      scss = do
+        route   $ setExtension "css"
+        compile $ getResourceString 
+                    >>> unixFilter "sass" ["-s", "--scss"]
+                    >>> arr compressCss
 
       topLevel = do
         route $ setExtension "html"
