@@ -42,24 +42,10 @@ main = hakyllWith config $ do
                >>> applyTemplateCompiler "templates/default.html"
 
     -- Render the posts
-    match "posts/*" $ do
-      route $ setExtension ".html"
-      compile $ pageCompiler
-            >>> arr (copyBodyToField "content")
-            >>> arr (renderDateField "date" "%B %e, %Y" "Date unknown")
-            >>> arr (setField "section" "Blog")
-            >>> applyTemplateCompiler "templates/post.html"
-            >>> applyTemplateCompiler "templates/default.html"
+    ["posts/*"] --> renderPost
 
-     -- Render the posts
-    match "drafts/*.markdown" $ do
-      route $ setExtension ".html"
-      compile $ pageCompiler
-            >>> arr (copyBodyToField "content")
-            >>> arr (renderDateField "date" "%B %e, %Y" "Date unknown")
-            >>> arr (setField "section" "Blog")
-            >>> applyTemplateCompiler "templates/post.html"
-            >>> applyTemplateCompiler "templates/default.html"
+     -- Render the draft posts
+    ["drafts/*.markdown"] --> renderPost
 
     -- Render RSS feed
     match  "rss.xml" $ route idRoute
@@ -78,6 +64,16 @@ main = hakyllWith config $ do
         compile $ pageCompiler
                 >>> applyTemplateCompiler "templates/default.html"
                 >>> relativizeUrlsCompiler
+
+      renderPost = do
+        route $ setExtension ".html"
+        compile $ pageCompiler
+                    >>> arr (copyBodyToField "content")
+                    >>> arr (renderDateField "date" "%B %e, %Y" "Date unknown")
+                    >>> arr (setField "section" "Blog")
+                    >>> applyTemplateCompiler "templates/post.html"
+                    >>> applyTemplateCompiler "templates/default.html"
+
 
 config :: HakyllConfiguration
 config = defaultHakyllConfiguration
