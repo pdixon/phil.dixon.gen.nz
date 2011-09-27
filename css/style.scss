@@ -10,7 +10,9 @@ body {
 }
 
 body.rhythm {
-    background: transparent url("/images/rhythm.png") top left;
+    background-image: -webkit-linear-gradient(rgba(255,255,255,.7) 50%, transparent 50%);
+    background-image: linear-gradient(rgba(255,255,255,.7) 50%, transparent 50%);
+    background-size: auto 50px;
 }
 
 a { text-decoration: none; color: #339; }
