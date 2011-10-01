@@ -17,7 +17,7 @@ main = hakyllWith config $ do
     ["images/*"] --> copy
 
     ["css/*.css"] --> css
-    ["css/*.scss"] --> scss
+    [regex "^css/[^_]+\\.scss$"] --> scss
 
     match "templates/*" $ do
       compile templateCompiler
@@ -63,7 +63,7 @@ main = hakyllWith config $ do
       scss = do
         route   $ setExtension "css"
         compile $ getResourceString 
-                    >>> unixFilter "sass" ["-s", "--scss"]
+                    >>> unixFilter "sass" ["-C", "-Icss/", "-s", "--scss"]
                     >>> arr compressCss
 
       topLevel = do
