@@ -13,5 +13,6 @@ was using the RAM on my current project.
 ~~~{.bash}
 #!/usr/bash
 
-arm-none-eabi-nm -S -t d --size-sort $1 | awk '{if ($3 ~ /B|b|D|d/) {print $0; total += $2}} END{print "Total RAM Usage: " total}'
+arm-none-eabi-nm -S -t d --size-sort $1 | \\
+awk '{if ($3 ~ /B|b|D|d/) {print $0; total += $2}} END{print "Total RAM Usage: " total}'
 ~~~
