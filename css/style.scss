@@ -1,3 +1,12 @@
+$base-font-size: 18px;
+$base-line-height: 25px;
+
+@import "vertical_rhythm";
+
+body {
+    @include establish_baseline;
+}
+
 @media screen {
 body {
    max-width: 700px;
@@ -5,8 +14,6 @@ body {
    /* padding: 18px; */
    background: whitesmoke;
    font-family: Georgia, Garamond, "Times New Roman", serif;
-   font-size: 18px;
-   line-height: 25px;
 }
 
 body.rhythm {
@@ -25,15 +32,12 @@ h1, h2, h3, h4 {
 /* @group Header */
 body > header {
    position: relative;
-   /* margin-top: .5em; */
-   /* margin-bottom: .5em; */
    color: gray;
 }
 
 body > header h1 {
-    margin-top: 7px;
-    margin-bottom: 7px;
-    line-height: 1em;
+    //@include adjust-font-size-to(30px);
+@include adjust-leading-to(0.5);
     display: block;
     font-weight: normal;
 }
@@ -43,10 +47,10 @@ body > header h1 a {
 }
 
 body > header h2 {
-   font-size: 1em;
-   font-weight: normal;
-   margin-top: 0;
-   margin-bottom: 0;
+    @include adjust-font-size-to(18px);
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 /* @end Header */
 
