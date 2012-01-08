@@ -15,7 +15,9 @@ For now I'm using [Amazon S3][s3]. This may change depending on the traffic,
 but for now it lets me get this site on the web with out having to
 spend any money up front.
 
-[hakyll]: <>
-[jekyll]: <>
-[octopress]: <http://octopress.org>
-[s3]: <>
+[hakyll]: http://
+[jekyll]: http://
+[octopress]: http://octopress.org
+[s3]: http://
+[pelican]: http://
+[calepin]: http://calepin.co
