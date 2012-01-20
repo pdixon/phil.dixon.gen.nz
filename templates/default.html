@@ -1,45 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" href="/css/style.css" />
+    <meta name="view port" content="width=device-width,initial-scale=1"/>
+    <link rel="stylesheet" href="/css/responsive.css" />
     <link rel="stylesheet" href="/css/syntax.css" />
-    <script src="js/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-                $(function() {
-                    $("a.rhythm").toggle(function() {
-                        $("body").addClass("rhythm");
-                    }, function() {
-                        $("body").removeClass("rhythm");
-                    });
-                });
-    </script>
     <title>$title$</title>
   </head>
-  <body id="$section$">
-    <header>
-      <hgroup>
-        <h1><a href="/">Phillip Dixon</a></h1>
-        <h2>Obscure things, but they interest me.</h2>
-      </hgroup>
-    <nav>
-      <ul>
-        <li><a id="Home" href="/">Home</a></li>
-        <li><a id="Archive" href="/archive.html">Archive</a></li>
-      </ul>
-    </nav>
-    </header>
-    <div id="content">
-    $body$
+  <body>
+    <div id="header-container">
+      <header class="wrapper clearfix">
+        <div class="title">
+          <h1>Phillip Dixon</h1>
+          <p>Obscure things, but they interest me.</p>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/archive.html">Archive</a></li>
+          </ul>
+        </nav>
+      </header>
     </div>
-    <footer>
-      <p>
-        &#169; 2009&#8211;11 <a href="/">Phillip Dixon</a><br/>
-        (<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/nz/"> Some rights reserved </a>)
-      </p>
-      <p>
-        Show <a href="#" class="rhythm">grid</a>.
-      </p>
-    </footer>
+    <div id="main" class="wrapper clearfix">
+      $body$
+    </div>
+    <div id="footer-container">
+      <footer class="wrapper">
+        <p>
+          &#169; 2009&#8211;11 <a href="/">Phillip Dixon</a><br/>
+          (<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/nz/"> Some rights reserved </a>)
+        </p>
+        <p>
+          Show <a href="#" class="rhythm">grid</a>.
+        </p>
+      </footer>
+    </div>
   </body>
 </html>
