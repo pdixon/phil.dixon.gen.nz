@@ -19,7 +19,32 @@ nav ul {
 
 body{
     font:16px/24px Helvetica, Helvetica Neue, Arial, sans-serif;
+    background: whitesmoke;
 }
+
+/* Superscript and subscript that don't screw with line spacing.
+   from http://www.cs.tut.fi/~jkorpela/www/linespacing.html
+*/
+sup, sub {
+    vertical-align: 0;
+    position: relative;
+}
+
+sup {
+    bottom: 1ex;
+}
+
+sub {
+    top: 0.8ex;
+}
+
+pre code {
+    font-size: 14px;
+}
+
+header h1 {margin-bottom: 0;}
+header a {text-decoration: none;}
+header p {margin: 0;}
 
 .wrapper {
     width: 90%;
@@ -112,7 +137,7 @@ nav a:hover{
     nav{
 	float:right;
 	width:38%;
-        margin-top: 82px;
+        margin-top: 45px;
     }
 
     #main article {
