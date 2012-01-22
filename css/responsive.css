@@ -1,0 +1,161 @@
+/* Helpers */
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+/* */
+
+body{
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font:16px/24px Helvetica, Helvetica Neue, Arial, sans-serif;
+    background: whitesmoke;
+}
+
+/* Superscript and subscript that don't screw with line spacing.
+   from http://www.cs.tut.fi/~jkorpela/www/linespacing.html
+*/
+sup, sub {
+    vertical-align: 0;
+    position: relative;
+}
+
+sup {
+    bottom: 1ex;
+}
+
+sub {
+    top: 0.8ex;
+}
+
+pre code {
+    font-size: 14px;
+}
+
+header h1 {
+    margin-bottom: 0;
+    color: #777777
+}
+header a {text-decoration: none;}
+header p {
+    margin-top: 0.25em;
+    margin-bottom: 0;
+}
+header p {color: #777777}
+
+.wrapper {
+    width: 90%;
+    margin: 0px 5%;
+}
+
+article + article:before {
+    content: "\2726";
+    color: #777777;
+    display:block;
+    text-align: center;
+    margin: 2em 0;
+}
+
+/* Color Theme */
+#header-container { border-bottom: 20px solid #777777; }
+#footer-container { border-top: 20px solid #777777; }
+
+#header-container,
+#footer-container {
+    background: #dcdcdc;
+}
+
+.title {
+    color: white;
+}
+
+/* Mobile Layout*/
+
+nav a{
+	display:block;
+	margin-bottom:10px;
+	padding:0 0;
+
+	background:#777777;
+	color:whitesmoke;
+
+	text-align:center;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+nav a:hover, nav a:visited{
+	color:whitesmoke;
+}
+
+nav a:hover{
+	text-decoration:underline;
+}
+
+#main{
+	padding:30px 0;
+}
+
+#footer-container footer{
+	color:#777777;
+	padding:20px 0;
+}
+
+footer a, footer a:hover, footer a:visited {
+    color: #777777;
+}
+
+/* Medium screens */
+@media only screen and (min-width:480px) {
+
+    nav a{
+	float:left;
+	width:27%;
+	margin:0 1.7%;
+	padding:0 2%;
+	margin-bottom:0;
+    }
+    
+    nav li:first-child a{ margin-left:0;  }
+    nav li:last-child  a{ margin-right:0; }
+    
+}
+
+/* Wide screens */
+@media only screen and (min-width:768px) {
+
+    #header-container {
+	-webkit-box-shadow:0 5px 10px #aaa;
+	-moz-box-shadow:0 5px 10px #aaa;
+	box-shadow:0 5px 10px #aaa;
+    }
+
+
+    .title{
+	float:left;
+    }
+    
+    nav{
+	float:right;
+	width:38%;
+        margin-top: 49px;
+    }
+}
+
+/* Full Width */
+@media only screen and (min-width:1140px) {
+    .wrapper {
+        width: 1026px;
+        margin: 0px auto;
+    }
+}
