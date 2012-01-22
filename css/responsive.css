@@ -51,6 +51,14 @@ header p {margin: 0;}
     margin: 0px 5%;
 }
 
+article + article:before {
+    content: "\2726";
+    color: #777777;
+    display:block;
+    text-align: center;
+    margin: 2em 0;
+}
+
 /* Color Theme */
 #header-container { border-bottom: 20px solid #777777; }
 #footer-container { border-top: 20px solid #777777; }
