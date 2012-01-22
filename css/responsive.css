@@ -42,9 +42,16 @@ pre code {
     font-size: 14px;
 }
 
-header h1 {margin-bottom: 0;}
+header h1 {
+    margin-bottom: 0;
+    color: #777777
+}
 header a {text-decoration: none;}
-header p {margin: 0;}
+header p {
+    margin-top: 0.25em;
+    margin-bottom: 0;
+}
+header p {color: #777777}
 
 .wrapper {
     width: 90%;
@@ -82,7 +89,7 @@ nav a{
 	padding:0 0;
 
 	background:#777777;
-	color:white;
+	color:whitesmoke;
 
 	text-align:center;
 	text-decoration:none;
@@ -90,7 +97,7 @@ nav a{
 }
 
 nav a:hover, nav a:visited{
-	color:white;
+	color:whitesmoke;
 }
 
 nav a:hover{
@@ -102,13 +109,17 @@ nav a:hover{
 }
 
 #main aside{
-	color:white;
+	color:whitesmoke;
 	padding:0px 5% 10px;
 }
 
 #footer-container footer{
-	color:white;
+	color:#777777;
 	padding:20px 0;
+}
+
+footer a, footer a:hover, footer a:visited {
+    color: #777777;
 }
 
 /* Medium screens */
@@ -145,7 +156,7 @@ nav a:hover{
     nav{
 	float:right;
 	width:38%;
-        margin-top: 45px;
+        margin-top: 49px;
     }
 
     #main article {
