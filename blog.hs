@@ -84,7 +84,7 @@ main = hakyllWith config $ do
 
 config :: HakyllConfiguration
 config = defaultHakyllConfiguration
-    { deployCommand = "s3cmd sync --exclude 'drafts/*' _site/* s3://phil.dixon.gen.nz"
+    { deployCommand = "s3cmd sync --delete-removed --exclude 'drafts/*' _site/* s3://phil.dixon.gen.nz"
     }
 
 
