@@ -140,6 +140,11 @@ footer a, footer a:hover, footer a:visited {
 	box-shadow:0 5px 10px #aaa;
     }
 
+    #footer-container {
+	-webkit-box-shadow:0 -5px 10px #aaa;
+	-moz-box-shadow:0 -5px 10px #aaa;
+	box-shadow:0 -5px 10px #aaa;
+    }
 
     .title{
 	float:left;
