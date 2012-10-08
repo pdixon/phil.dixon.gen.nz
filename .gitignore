@@ -9,3 +9,4 @@ _cache/*
 *.o
 hakyll
 blog
+site/*
