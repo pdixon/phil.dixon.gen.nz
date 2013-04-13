@@ -1,0 +1,12 @@
+#+title: How this Site is Built
+
+* Rendering
+
+* Design
+
+* Hosting
+
+Since the site is entirely static files not much is need to host it. For
+now I'm using [[http://][Amazon S3]]. This may change depending on the
+traffic, but for now it lets me get this site on the web with out having
+to spend any money up front.

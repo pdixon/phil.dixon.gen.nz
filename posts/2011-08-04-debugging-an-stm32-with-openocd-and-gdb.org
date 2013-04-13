@@ -1,0 +1,49 @@
+#+title: Debugging an STM32 With OpenOCD and GDB
+#+date: 2011-08-04
+
+* Hooking GDB to OpenOCD
+
+OpenOCD implements the GDB remote protocol. Typically OpenOCD serves up
+a port on localhost, GDB then connects to this. In this arrangement
+there are two process involved in the debugging and they need to managed
+separately. This is a pain and tends led to scripts with =pskill= in
+them  [1].
+
+It turn out that this isn't the only way for GDB to communicate with the
+remote. The remote target can also be run as a child process.
+
+#+BEGIN_EXAMPLE
+    target remote | openocd -p
+#+END_EXAMPLE
+
+By doing things this way we now only have one set of processes to manage
+(no more =pskill=).
+
+* Watchpoints
+
+The Cortex M3 has hardware watch points in it's onboard debugging unit
+(see
+[[http://www.arm.com/products/processors/cortex-m/cortex-m3.php][Cortex
+M3 Specifications]]). OpenOCD and GDB both support watch points. Setting
+watch points using the =watch= command in GDB doesn't seem to work.
+Setting the watch points in OpenOCD using monitor commands does seem to
+work.
+
+#+BEGIN_EXAMPLE
+    monitor rwp [address] length
+#+END_EXAMPLE
+
+Watchpoints are removed with:
+
+#+BEGIN_EXAMPLE
+    monitor rwp [address]
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+    target remote | openocd -p
+    set remote hardware-breakpoint-limit 6
+    set remote hardware-watchpoint-limit 4
+    monitor reset halt
+#+END_EXAMPLE
+
+[1] =pskill= in scripts always makes me feel a bit uncomfortable.

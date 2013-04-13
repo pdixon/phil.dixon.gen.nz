@@ -1,0 +1,7 @@
+#+title: Arch Linux on Beaglebone
+
+[[http://archlinuxarm.org/][Arch Linux Arm]] doesn't seem to offically
+support the [[http://beagleboard.org/bone][Beaglebone]] yet. It does
+support both the Gumstix Orevo and the Beagleboard. These both use
+OMAP3s with A8 cores -- the SoC on the Beaglebone is closely related. It
+also has an A8 and boots off an SD Card.

@@ -1,0 +1,45 @@
+#+title: Building a Kernel for the Beaglebone
+
+I wanted to get some extra hardware enabled on my [[http://beagleboard.org/bone][Beaglebone]]. As far
+as I known this means building a new kernel. The only references I
+found were talking about rebuilding the entire system. I tried doing
+this with the default [[http://www.angstrom-distribution.org/][Angstrom]] distribution. I couldn't get this to
+build the kernel at all.
+
+I give up on Angstrom and looked for an alternative. [[http://buildroot.uclibc.org/][Buildroot]] looked
+very promising.
+
+There are two kernel trees of interest. Beagleboard have a [[https://github.com/beagleboard/linux][tree]] with
+some Beaglebone specific hardware set up. There is also [[http://arago-project.org/git/projects/?p=linux-am33x.git;a=summary][tree]] hosted by
+TI where the SoC work happens. In theory the beagleboard tree is based
+on the TI tree. In practise there seem to be patches in the TI tree
+that haven't made into the beagleboard tree. I used the TI tree and
+cherry picked the patches I was interested in [1]
+
+* Building the Kernel
+
+Earlier I mention buildroot and Angstrom. After I got buildroot going
+I found if all you want is a kernel this is unnecessary. The kernel
+build system has direct support for cross compiling.
+
+** Configuring
+
+#+BEGIN_SRC sh
+    make ARCH=arm CROSS-COMPILE= menuconfig
+#+END_SRC
+
+** Building
+
+#+BEGIN_SRC sh
+    make -j2 ARCH=arm CROSS-COMPILE= uImage
+    make -j2 ARCH=arm CROSS-COMPILE= modules
+#+END_SRC
+
+** Installing
+
+#+BEGIN_SRC sh
+    cp arch/arm/boot/uImage /media/boot
+    make TODO=/media/rootfs module_install
+#+END_SRC
+
+[1] I think only the LED set up was the only thing I bothered grabbing.

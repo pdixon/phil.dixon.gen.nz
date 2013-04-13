@@ -1,0 +1,45 @@
+#+title: Installing Arch Linux on a Macbook4,1
+
+* Installing Arch Linux on a Macbook4,1
+
+** Booting
+
+[[http://d.goodlad.net/articles/arch_linux_on_mba_42/][Arch Linux on a
+Macbook Air 4,2 - David Goodlad]]
+
+-  Used grub-efi-x86-64
+
+-  Location of .efi seems to be important.
+
+** Hardware
+
+*** Wifi
+
+Broadcom chipset. Mainline driver works well. Needs firmware cutter and
+firmware from AUR.
+
+TODO I'm sure this had 802.11N under Mac OSX. I'm only seeing G networks
+on Arch.
+
+*** Keyboard
+
+The keyboard defaults to the function keys doing their special function.
+Install pommed from AUR if you want to change this.
+
+*** iSight
+
+The driver was installed by default. Needs firmware to be operational.
+
+*** Bluetooth
+
+Disabled by default?? Not sure why or how to correct.
+
+*** Video
+
+-  Can't parse VBT. I think this is something to do with lack of BIOS.
+   Things seem to be working though.
+
+*** Sound
+
+Optical port defaults to on. Mute the digital output in the audio
+settings.
