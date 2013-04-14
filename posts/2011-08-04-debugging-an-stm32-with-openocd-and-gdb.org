@@ -7,7 +7,7 @@ OpenOCD implements the GDB remote protocol. Typically OpenOCD serves up
 a port on localhost, GDB then connects to this. In this arrangement
 there are two process involved in the debugging and they need to managed
 separately. This is a pain and tends led to scripts with =pskill= in
-them  [1].
+them [1].
 
 It turn out that this isn't the only way for GDB to communicate with the
 remote. The remote target can also be run as a child process.

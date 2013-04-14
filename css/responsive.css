@@ -53,9 +53,13 @@ header p {
 }
 header p {color: #777777}
 
-.wrapper {
+.wrapper, #content {
     width: 90%;
     margin: 0px 5%;
+}
+
+#content h1 {
+    color: #777777
 }
 
 article + article:before {
@@ -67,15 +71,15 @@ article + article:before {
 }
 
 /* Color Theme */
-#header-container { border-bottom: 20px solid #777777; }
-#footer-container { border-top: 20px solid #777777; }
+#preamble { border-bottom: 20px solid #777777; }
+#postamble { border-top: 20px solid #777777; }
 
-#header-container,
-#footer-container {
+#preamble,
+#postamble {
     background: #dcdcdc;
 }
 
-.title {
+.masthead {
     color: white;
 }
 
@@ -102,11 +106,11 @@ nav a:hover{
 	text-decoration:underline;
 }
 
-#main{
+#content{
 	padding:30px 0;
 }
 
-#footer-container footer{
+#postamble footer{
 	color:#777777;
 	padding:20px 0;
 }
@@ -134,19 +138,19 @@ footer a, footer a:hover, footer a:visited {
 /* Wide screens */
 @media only screen and (min-width:768px) {
 
-    #header-container {
+    #preamble {
 	-webkit-box-shadow:0 5px 10px #aaa;
 	-moz-box-shadow:0 5px 10px #aaa;
 	box-shadow:0 5px 10px #aaa;
     }
 
-    #footer-container {
+    #postamble {
 	-webkit-box-shadow:0 -5px 10px #aaa;
 	-moz-box-shadow:0 -5px 10px #aaa;
 	box-shadow:0 -5px 10px #aaa;
     }
 
-    .title{
+    .masthead{
 	float:left;
     }
     
@@ -159,7 +163,7 @@ footer a, footer a:hover, footer a:visited {
 
 /* Full Width */
 @media only screen and (min-width:1140px) {
-    .wrapper {
+    .wrapper, #content {
         width: 1026px;
         margin: 0px auto;
     }
