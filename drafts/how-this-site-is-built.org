@@ -1,12 +1,50 @@
 #+title: How this Site is Built
 
-* Rendering
+* Generating
 
-* Design
+As with is the custom this site is built with a static generator, in
+this case Org mode. Arriving at Org mode has taken a while.
+
+In the beginning I used Jekyll. It looked good and it was built in to
+github pages. All very convenient. But I wasn't quite happy with it. The
+markdown processor didn't do some things I wanted[fn:1]. I could
+customise this, but there didn't seem to be much that I could change
+and still have it built on github pages. If I couldn't use github
+pages then it didn't have much going for it.
+
+Next I looked at Hakyll. This used pandoc to do it's markdown
+processing, no issue there. It all worked very nicely. I got every
+thing to a point I was happy. But then I started playing with little
+ARM boxes. Hakyll's dependency on Haskell started to be much more of
+a problem.
+
+I tinkered with building my own system in Lua. I used Lunamark to
+handle the core markdown processing. It turns out that using external
+packages requires a bit of mucking around in Lua especially if your
+using luajit (I was). It all sort of petered out.
+
+Finally it occurred to me. Org mode. Any machine I was going to write
+on was going to have Emacs installed. Org mode has a pretty good
+exporter. This all occurred to me about a week before Org 8.0. I
+couldn't quite coax the pre 8.0 exporter in to producing the html I
+wanted. But it didn't take me long to produce something I was happy
+with using the 8.0 exporter.
+
+
+** References
+
+- http://justinlilly.com/emacs/orgmode_static_site_generator.html
+- http://zmalltalker.com/meta.html
+- http://mxs.sbrk.org/welcome-org-mode.html
 
 * Hosting
 
-Since the site is entirely static files not much is need to host it. For
-now I'm using [[http://][Amazon S3]]. This may change depending on the
-traffic, but for now it lets me get this site on the web with out having
-to spend any money up front.
+Since the site is entirely static files not much is need to host it.
+For now I'm using [[http://][Amazon S3]]. This may change depending on the traffic,
+but for now it lets me get this site on the web with out having to
+spend any money up front.
+
+* Footnotes
+
+[fn:1] From memory it didn't handle footnotes or definition lists.
+

@@ -10,3 +10,4 @@ _cache/*
 hakyll
 blog
 /posts/index.org
+/drafts/index.org
