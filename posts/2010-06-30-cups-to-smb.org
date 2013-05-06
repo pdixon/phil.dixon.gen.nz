@@ -1,5 +1,5 @@
 #+title: SMB Printers with CUPS on Debian
-#+date: 2010-06-30
+#+date: [2010-06-30 Wed]
 
 I just spent a very frustrating couple of hours this afternoon trying to
 get CUPS to event acknowledge smb printers existed. It would work
