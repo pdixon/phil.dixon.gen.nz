@@ -1,6 +1,6 @@
 #+title:
 
-I'm Phillip Dixon. By day I write software. By night, well actually
+I'm Phillip Dixon. By day I write software. By night... well actually
 it turns out I write software then as well.
 
 My rather infrequent technical writings are [[file:posts/index.org][here]].
