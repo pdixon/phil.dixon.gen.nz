@@ -1,4 +1,4 @@
-#+title: How this Site is Built
+#+TITLE: How this Site is Built
 
 * Generating
 

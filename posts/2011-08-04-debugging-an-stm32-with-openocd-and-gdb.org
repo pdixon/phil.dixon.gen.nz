@@ -1,5 +1,5 @@
-#+title: Debugging an STM32 With OpenOCD and GDB
-#+date: 2011-08-04
+#+TITLE: Debugging an STM32 With OpenOCD and GDB
+#+DATE: <2011-08-04>
 
 * Hooking GDB to OpenOCD
 

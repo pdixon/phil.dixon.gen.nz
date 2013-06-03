@@ -1,5 +1,5 @@
-#+title: Tracking RAM Usage
-#+date: 2011-08-02
+#+TITLE: Tracking RAM Usage
+#+DATE: <2011-08-02>
 
 Working on embedded projects sooner or later RAM becomes an issue. Then
 it's a matter of going through the heavy RAM consumers and seeing what
