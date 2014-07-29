@@ -1,9 +1,10 @@
 @import url("bootstrap.css");
 
-html,
 body {
   height: 100%;
   /* The html and body elements cannot have any padding or margin. */
+  width: 76%;
+  margin: auto;
 }
 
 /* Wrapper for page content to push down footer */

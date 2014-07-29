@@ -1,4 +1,5 @@
-#+title:
+#+TITLE: Phil's Tech Notes
+#+AUTHOR: Phillip Dixon
 
 I'm Phillip Dixon. By day I write software. By night... well actually
 it turns out I write software then as well.
