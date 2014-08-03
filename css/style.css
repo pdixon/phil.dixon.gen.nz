@@ -1,16 +1,16 @@
 @import url("bootstrap.css");
 
+html,
 body {
   height: 100%;
   /* The html and body elements cannot have any padding or margin. */
-  width: 76%;
-  margin: auto;
 }
 
 /* Wrapper for page content to push down footer */
 #wrap {
   min-height: 100%;
-  height: auto;
+  height: auto !important;
+  height: 100%;
   /* Negative indent footer by its height */
   margin: 0 auto -60px;
   /* Pad bottom by footer height */
@@ -19,6 +19,7 @@ body {
 
 /* Set the fixed height of the footer here */
 footer {
-  height: 60px;
-  background-color: #f5f5f5;
+    height: 60px;
+    width: 100%;
+    background-color: #f5f5f5;
 }
