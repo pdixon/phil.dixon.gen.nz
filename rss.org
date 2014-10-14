@@ -1,0 +1,28 @@
+#+BEGIN_SRC emacs-lisp :results output raw :exports results
+  (require 'magit)
+  (require 'pd-export-helpers)
+  (let* ((dir "posts")
+         (files (directory-files dir t "^[^\\.][^#].*\\.org$" t))
+         entries)
+    (dolist (file files)
+      (let* ((path (concat dir "/" (file-name-nondirectory file)))
+             (git-date (date-to-time (magit-git-string "log" "-1" "--format=%ci" file)))
+             (env (org-combine-plists
+                   (org-babel-with-temp-filebuffer file (org-export-get-environment)))))
+        (plist-put env :path path)
+        (plist-put env :git-date git-date)
+        (plist-put env :file file)
+        (push env entries)))
+    (dolist (entry (sort entries (lambda (a b)
+                                   (time-less-p (plist-get b :git-date)
+                                                (plist-get a :git-date)))))
+      (princ (format "* %s\n" (car (plist-get entry :title))))
+      (princ ":PROPERTIES:\n")
+      (princ (format ":RSS_PERMALINK: %s\n" (plist-get entry :path)))
+      (princ (format ":PUBDATE: %s\n"
+                     (format-time-string "%Y-%m-%d %H:%M" (plist-get entry :git-date))))
+      (princ ":END:\n")
+      (princ "#+BEGIN_HTML\n")
+      (princ (pd-export-html-string (plist-get entry :file)))
+      (princ "\n#+END_HTML\n")))
+#+END_SRC
