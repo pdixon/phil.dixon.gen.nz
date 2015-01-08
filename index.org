@@ -18,7 +18,7 @@ My rather infrequent technical writings are [[file:posts/index.org][here]].
       (princ
        (format
         "* [[file:%s][%s]]\n\nPublished: %s\n\nLast update: %s\n\n"
-        (f-relative (plist-get entry :file) dir)
+        (f-relative (plist-get entry :file) "./")
         (car (plist-get entry :title))
         (org-timestamp-format (car (plist-get entry :date)) "%Y-%m-%d")
         (format-time-string "%Y-%m-%d %H:%M" (plist-get entry :git-date))))))
